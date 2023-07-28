@@ -3,7 +3,6 @@ import shutil
 import random
 
 
-
 BASE_DIR = '../data'
 RAW_DIR = os.path.join(BASE_DIR, 'raw')
 TRAIN_IMG_PATH = os.path.join(BASE_DIR, 'train/images')
@@ -11,7 +10,6 @@ TRAIN_LABEL_PATH = os.path.join(BASE_DIR, 'train/labels')
 VAL_IMG_PATH = os.path.join(BASE_DIR, 'val/images')
 VAL_LABEL_PATH = os.path.join(BASE_DIR, 'val/labels')
 TEST_IMG_PATH = os.path.join(BASE_DIR, 'test/images')
-
 
 
 def split_images_labels(all_files, subfile, name, IMG_DIR, LABEL_DIR=None):
@@ -32,7 +30,6 @@ def split_images_labels(all_files, subfile, name, IMG_DIR, LABEL_DIR=None):
     # create directory if not created
     os.makedirs(IMG_DIR, exist_ok=True)
     os.makedirs(IMG_DIR, exist_ok=True)
-
 
     # Copy files to the respective folders
     if IMG_DIR:
@@ -56,8 +53,6 @@ def split_images_labels(all_files, subfile, name, IMG_DIR, LABEL_DIR=None):
                 shutil.copy(LABEL_DIR, destination)
         except:
             print("Unable to save the labels.")
-
-
 
 
 def train_test_split(name, split_ratio, sample=110):
