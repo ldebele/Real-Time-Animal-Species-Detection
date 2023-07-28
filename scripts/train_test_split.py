@@ -14,7 +14,7 @@ TEST_IMG_PATH = os.path.join(BASE_DIR, 'test/images')
 
 
 
-def split_images_labels(all_files, subfile, names, img_destination, label_destination=None):
+def split_images_labels(all_files, subfile, names, IMG_DIR, LABEL_DIR=None):
     """
         Args:
             img_destination:
@@ -29,20 +29,34 @@ def split_images_labels(all_files, subfile, names, img_destination, label_destin
     images = [img for img in data if img.endswith(".jpg")]
     labels = [label for label in data if label.endswith(".txt")]
 
-    # Copy files to the respective folders
-    try:
-        for img in images:
-            IMG_DIR = os.path.join(RAW_DIR, f"{names}/{img}")
-            shutil.copy(IMG_DIR, img_destination)
-    except:
-        print("Unable to save the images")
+    # create directory
+    os.makedirs(IMG_DIR, exist_ok=True)
+    os.makedirs(IMG_DIR, exist_ok=True)
 
-    try:
-        for label in labels:
-            LABEL_DIR = os.path.join(RAW_DIR, f"{names}/{label}")
-            shutil.copy(LABEL_DIR, label_destination)
-    except:
-        print("Unable to save the labels.")
+
+    # Copy files to the respective folders
+    if IMG_DIR:
+        # create directory
+        os.makedirs(f"{IMG_DIR}/{names}", exist_ok=True)
+        destination = os.path.join(IMG_DIR, names)
+        try:
+            for img in images:
+                IMG_DIR = os.path.join(RAW_DIR, f"{names}/{img}")
+                shutil.copy(IMG_DIR, destination)
+        except:
+            print("Unable to save the images")
+
+    if LABEL_DIR:
+        # create directory
+        os.makedirs(f"{LABEL_DIR}/{names}", exist_ok=True)
+        destination = os.path.join(LABEL_DIR, names)
+        try:
+            for label in labels:
+                LABEL_DIR = os.path.join(RAW_DIR, f"{names}/{label}")
+                shutil.copy(LABEL_DIR, destination)
+        except:
+            print("Unable to save the labels.")
+
 
 
 
@@ -74,7 +88,7 @@ def train_test_split(name, split_ratio, sample=110):
     test_sets = files[train_size+val_size:]
 
     # split and save the dataset into images and labels
-    split_images_labels(os.listdir(DATA_PATH), train_sets, name, TRAIN_IMG_PATH, TRAIN_LABEL_PATH,)  # For training set
+    split_images_labels(os.listdir(DATA_PATH), train_sets, name, TRAIN_IMG_PATH, TRAIN_LABEL_PATH)  # For training set
     split_images_labels(os.listdir(DATA_PATH), val_sets, name, VAL_IMG_PATH, VAL_LABEL_PATH)  # For validation set
     split_images_labels(os.listdir(DATA_PATH), test_sets, name, TEST_IMG_PATH)  # For test set
     
