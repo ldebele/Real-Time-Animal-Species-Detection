@@ -14,14 +14,14 @@ TEST_IMG_PATH = os.path.join(BASE_DIR, 'test/images')
 
 
 
-def split_images_labels(all_files, subfile, names, IMG_DIR, LABEL_DIR=None):
+def split_images_labels(all_files, subfile, name, IMG_DIR, LABEL_DIR=None):
     """
         Args:
-            img_destination:
-            label_destination:
-            all_files: list    ->
-            subfile: list         ->
-            type: str          ->
+            all_files: list   
+            subfile: list         
+            names: str
+            IMD_DIR: str
+            LABED_DIR: str
     """
 
     data = [file for file in all_files if file[:3] in subfile]
@@ -29,7 +29,7 @@ def split_images_labels(all_files, subfile, names, IMG_DIR, LABEL_DIR=None):
     images = [img for img in data if img.endswith(".jpg")]
     labels = [label for label in data if label.endswith(".txt")]
 
-    # create directory
+    # create directory if not created
     os.makedirs(IMG_DIR, exist_ok=True)
     os.makedirs(IMG_DIR, exist_ok=True)
 
@@ -37,22 +37,22 @@ def split_images_labels(all_files, subfile, names, IMG_DIR, LABEL_DIR=None):
     # Copy files to the respective folders
     if IMG_DIR:
         # create directory
-        os.makedirs(f"{IMG_DIR}/{names}", exist_ok=True)
-        destination = os.path.join(IMG_DIR, names)
+        os.makedirs(f"{IMG_DIR}/{name}", exist_ok=True)
+        destination = os.path.join(IMG_DIR, name)
         try:
             for img in images:
-                IMG_DIR = os.path.join(RAW_DIR, f"{names}/{img}")
+                IMG_DIR = os.path.join(RAW_DIR, f"{name}/{img}")
                 shutil.copy(IMG_DIR, destination)
         except:
             print("Unable to save the images")
 
     if LABEL_DIR:
         # create directory
-        os.makedirs(f"{LABEL_DIR}/{names}", exist_ok=True)
-        destination = os.path.join(LABEL_DIR, names)
+        os.makedirs(f"{LABEL_DIR}/{name}", exist_ok=True)
+        destination = os.path.join(LABEL_DIR, name)
         try:
             for label in labels:
-                LABEL_DIR = os.path.join(RAW_DIR, f"{names}/{label}")
+                LABEL_DIR = os.path.join(RAW_DIR, f"{name}/{label}")
                 shutil.copy(LABEL_DIR, destination)
         except:
             print("Unable to save the labels.")
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     # set split ratio
     split_ratio = [0.8, 0.15]  # 80% train, 15% validation, 5% test
 
-    # 
+    # split the raw data into train, validation and test sets.
     train_test_split("buffalo", split_ratio)
     train_test_split("elephant", split_ratio)
     train_test_split("rhino", split_ratio)
