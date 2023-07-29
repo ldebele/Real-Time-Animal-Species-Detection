@@ -5,11 +5,14 @@ import random
 
 BASE_DIR = '../data'
 RAW_DIR = os.path.join(BASE_DIR, 'raw')
-TRAIN_IMG_PATH = os.path.join(BASE_DIR, 'train/images')
-TRAIN_LABEL_PATH = os.path.join(BASE_DIR, 'train/labels')
-VAL_IMG_PATH = os.path.join(BASE_DIR, 'val/images')
-VAL_LABEL_PATH = os.path.join(BASE_DIR, 'val/labels')
-TEST_IMG_PATH = os.path.join(BASE_DIR, 'test/images')
+IMG_DIR = os.path.join(BASE_DIR, 'images')
+LABEL_DIR = os.path.join(BASE_DIR, 'labels')
+TRAIN_IMG_PATH = os.path.join(IMG_DIR, 'train')
+TRAIN_LABEL_PATH = os.path.join(LABEL_DIR, 'train')
+VAL_IMG_PATH = os.path.join(IMG_DIR, 'val')
+VAL_LABEL_PATH = os.path.join(LABEL_DIR, 'val')
+TEST_IMG_PATH = os.path.join(IMG_DIR, 'test')
+
 
 
 def split_images_labels(all_files, subfile, name, IMG_DIR, LABEL_DIR=None):
