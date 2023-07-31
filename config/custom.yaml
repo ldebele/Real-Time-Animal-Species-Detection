@@ -1,9 +1,9 @@
-
 # dataset directory path
-path: '../data/raw'
-train: '../data/train'
-test: '../data/test'
-valid: '../data/val'
+path: '../data'
+train: '/images/train'
+test: './images/test'
+valid: './images/val'
+
 
 # classes
 nc: 4 
