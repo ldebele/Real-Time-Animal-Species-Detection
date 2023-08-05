@@ -54,7 +54,7 @@ def train_test_split(name, split_ratio, sample=150):
 
     # set to the raw data path
     DATA_PATH = os.path.join(RAW_DIR, name)
-    files = [filename[:3] for filename in os.listdir(DATA_PATH) if filename.endswith(".txt")]
+    files = [filename[:-4] for filename in os.listdir(DATA_PATH) if filename.endswith(".txt")]
 
     # shuffle the data
     random.seed(42)

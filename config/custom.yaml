@@ -1,12 +1,11 @@
 # dataset directory path
 path: '../data'
 train: '/images/train'
-test: './images/test'
 valid: './images/val'
-
+test: './images/test'
 
 # classes
-nc: 4 
+nc: 10
 
 # Classes names
-names: ['Buffalo', 'Elephant', 'Rhino', 'Zebra']
+names: ['Buffalo', "Cheetah", 'Elephant', 'Fox', 'Jaguar', 'Leapard', 'Lion', 'Panda', 'Rhino', 'Zebra']
