@@ -6,8 +6,13 @@ from PIL import Image
 
 RAW_DIR = './data/raw'
 
-# Instantiate logger
-logging.basicConfig(filename="./log/preprocess.log", filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+
+logging.basicConfig(
+            filename="./logs/preprocess.log", 
+            filemode='w', 
+            level=logging.INFO, 
+            format='%(asctime)s:%(levelname)s:%(name)s:%(message)s'
+        )
 
 
 def is_normalized(bound_box_dim):
@@ -17,12 +22,12 @@ def is_normalized(bound_box_dim):
 def to_yolo_format(label, img_width, img_height):
     """
         Args:
-            label:
-            img_width: int
-            img_heith: int
+            label: list       -> pascal format label
+            img_width: int    -> image width
+            img_heith: int    -> image height
         
         Returns:
-            yolo_format: str
+            yolo_format: str   -> yolo format label
     """
     # class labels
     class_labels = {
@@ -60,7 +65,6 @@ def to_yolo_format(label, img_width, img_height):
 
     # Format the YOLO string
     yolo_format = f"{class_label} {norm_center_x:.6f} {norm_center_y:.6f} {norm_width:.6f} {norm_height:.6f}"
-    logging.info("Completed Pascal.")
 
     return yolo_format
 
@@ -68,7 +72,7 @@ def to_yolo_format(label, img_width, img_height):
 def convert_to_yolo(label_path):
     """
         Args:
-            label: 
+            label_path: location of labels
     """
 
     # Read the images
@@ -98,7 +102,6 @@ def convert_to_yolo(label_path):
     else:
         yolo_format = to_yolo_format(label, width, height)
 
-        logging.info("save yolo format into txt file.")
         with open(label_path, 'w') as f:
             f.write(yolo_format)
 
@@ -108,7 +111,12 @@ if __name__ == "__main__":
     animals = os.listdir(RAW_DIR)
 
     for animal in animals:
-        labels = glob.glob(f'{RAW_DIR}/{animal.lower()}/*.txt')
-        for label in labels:
-            convert_to_yolo(label)
-        # map(convert_to_yolo, labels)
+        path_labels = glob.glob(f'{RAW_DIR}/{animal.lower()}/*.txt')
+        for path_label in path_labels:
+            convert_to_yolo(path_label)
+    
+    logging.info("Save the YOLO format into a .txt file.")
+
+    logging.info("Successfully completed the conversion from Pascal format to YOLO format.")
+
+      

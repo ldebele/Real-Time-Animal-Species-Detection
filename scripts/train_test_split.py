@@ -1,18 +1,27 @@
 import os
 import shutil
 import random
+import logging
 
 
-BASE_DIR = '../data'
+BASE_DIR = './data'
 RAW_DIR = os.path.join(BASE_DIR, 'raw')
+
+logging.basicConfig(
+            filename="./logs/preprocess.log", 
+            filemode='a', 
+            level=logging.INFO, 
+            format='%(asctime)s:%(levelname)s:%(name)s:%(message)s'
+        )
+
 
 
 def images_labels_split(all_files, subfile, name, mode):
     """
         Args:
-            all_files: list   
-            subfile: list         
-            names: str
+            all_files: list     -> location of raw files.
+            subfile: list       -> random selected files.
+            names: str          -> names of an animal
             mode: str
     """
 
@@ -30,8 +39,9 @@ def images_labels_split(all_files, subfile, name, mode):
         for img in images:
             RAW_IMG_DIR = os.path.join(RAW_DIR, f"{name}/{img}")
             shutil.copy(RAW_IMG_DIR, IMG_DIR)
+            # logging.info(f"Copy the raw images into {mode} set")
     except:
-        print("Unable to save the images")
+        logging.warning("Unable to save the images.")
  
     # create directory if not created
     LABEL_DIR = os.path.join(BASE_DIR, f'labels/{mode}/{name}')
@@ -40,16 +50,17 @@ def images_labels_split(all_files, subfile, name, mode):
         for label in labels:
             RAW_LABEL_DIR = os.path.join(RAW_DIR, f"{name}/{label}")
             shutil.copy(RAW_LABEL_DIR, LABEL_DIR)
+            # logging.info(f"Copy the raw labels into {mode} set")
     except:
-        print("Unable to save the labels.")
+        logging.warning("Unable to save the labels.")
 
 
 def train_test_split(name, split_ratio, sample=150):
     """
         Args:
-            name: str
-            split_ratio: list
-            sample: int
+            name: str               -> name of an animal
+            split_ratio: list       -> list of split ratio
+            sample: int             -> sample size
     """
 
     # set to the raw data path
@@ -90,3 +101,5 @@ if __name__ == "__main__":
     for animal in animals:
         # split the raw data into train, validation and test sets.
         train_test_split(animal, split_ratio)
+
+    logging.info("Successfully completed the datasets splitting.")
