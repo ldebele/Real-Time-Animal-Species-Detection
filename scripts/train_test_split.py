@@ -13,10 +13,10 @@ def images_labels_split(all_files, subfile, name, mode):
             all_files: list   
             subfile: list         
             names: str
-            IMD_DIR: str
-            LABED_DIR: str
+            mode: str
     """
 
+    # select file names from all files.
     data = [file for file in all_files if file[:3] in subfile]
 
     images = [img for img in data if img.endswith(".jpg")]
@@ -32,21 +32,19 @@ def images_labels_split(all_files, subfile, name, mode):
             shutil.copy(RAW_IMG_DIR, IMG_DIR)
     except:
         print("Unable to save the images")
+ 
+    # create directory if not created
+    LABEL_DIR = os.path.join(BASE_DIR, f'labels/{mode}/{name}')
+    os.makedirs(LABEL_DIR, exist_ok=True)
+    try:
+        for label in labels:
+            RAW_LABEL_DIR = os.path.join(RAW_DIR, f"{name}/{label}")
+            shutil.copy(RAW_LABEL_DIR, LABEL_DIR)
+    except:
+        print("Unable to save the labels.")
 
 
-    if mode != 'test':
-        # create directory if not created
-        LABEL_DIR = os.path.join(BASE_DIR, f'labels/{mode}/{name}')
-        os.makedirs(LABEL_DIR, exist_ok=True)
-        try:
-            for label in labels:
-                RAW_LABEL_DIR = os.path.join(RAW_DIR, f"{name}/{label}")
-                shutil.copy(RAW_LABEL_DIR, LABEL_DIR)
-        except:
-            print("Unable to save the labels.")
-
-
-def train_test_split(name, split_ratio, sample=110):
+def train_test_split(name, split_ratio, sample=150):
     """
         Args:
             name: str
@@ -63,7 +61,8 @@ def train_test_split(name, split_ratio, sample=110):
     random.shuffle(files)
 
     # randomly takes sample images
-    files = random.sample(files, sample)
+    if sample < len(files):
+        files = random.sample(files, sample)
 
     # Calculate the split sizes based on the split ratio
     train_size = int(sample * split_ratio[0])
@@ -85,7 +84,9 @@ if __name__ == "__main__":
     # set split ratio
     split_ratio = [0.8, 0.15]  # 80% train, 15% validation, 5% test
 
-    animals = ["buffalo", "elephant", "rhino", "zebra"]
+    # list all animals
+    animals = os.listdir(RAW_DIR)
+
     for animal in animals:
         # split the raw data into train, validation and test sets.
         train_test_split(animal, split_ratio)
