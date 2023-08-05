@@ -14,6 +14,56 @@ def is_normalized(bound_box_dim):
     return 0.0 <= bound_box_dim <= 1.0
 
 
+def to_yolo_format(label, img_width, img_height):
+    """
+        Args:
+            label:
+            img_width: int
+            img_heith: int
+        
+        Returns:
+            yolo_format: str
+    """
+    # class labels
+    class_labels = {
+            "buffalo": 0,
+            "elephant": 1,
+            "rhino": 2,
+            "zebra": 3,
+            "cheetah": 4,
+            "fox": 5,
+            "jaguar": 6,
+            "leopard": 7,
+            "lion": 8,
+            "panda": 9,
+        }
+
+
+    # Extract the values
+    class_label = class_labels[label[0].lower()]
+    x_min = label[1]
+    y_min = label[2]
+    x_max = label[3]
+    y_max = label[4]
+
+    # Calculate the center coordinates and dimensions of the bounding box
+    center_x = (x_min + x_max) / 2
+    center_y = (y_min + y_max) / 2
+    width = x_max - x_min
+    height = y_max - y_min
+
+    # Normalize the coordinates
+    norm_center_x = center_x / img_width
+    norm_center_y = center_y / img_height 
+    norm_width = width / img_width 
+    norm_height = height / img_height
+
+    # Format the YOLO string
+    yolo_format = f"{class_label} {norm_center_x:.6f} {norm_center_y:.6f} {norm_width:.6f} {norm_height:.6f}"
+    logging.info("Completed Pascal.")
+
+    return yolo_format
+
 
 def convert_to_yolo(label_path):
     """

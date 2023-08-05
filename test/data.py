@@ -19,8 +19,8 @@ class TestData(unittest.TestCase):
         ('./data/images/train/zebra', './data/labels/train/zebra')
     ])
     def test_len_images_labels(self, IMG_DIR, LABEL_DIR):
-        images = [file[:3] for file in os.listdir(IMG_DIR)]
-        labels = [file[:3] for file in os.listdir(LABEL_DIR)]
+        images = [file[:-4] for file in os.listdir(IMG_DIR)]
+        labels = [file[:-4] for file in os.listdir(LABEL_DIR)]
         self.assertEqual(len(images), len(labels))
 
 
@@ -37,11 +37,9 @@ class TestData(unittest.TestCase):
         ('./data/images/train/zebra', './data/labels/train/zebra')
     ])
     def test_images_labels_contain_same_file(self, IMG_DIR, LABEL_DIR):
-        images = [file[:3] for file in os.listdir(IMG_DIR)]
-        labels = [file[:3] for file in os.listdir(LABEL_DIR)]
+        images = [file[:-4] for file in os.listdir(IMG_DIR)]
+        labels = [file[:-4] for file in os.listdir(LABEL_DIR)]
         self.assertEqual(set(images), set(labels))
-
-    
 
 
 if __name__ == '__main__':
