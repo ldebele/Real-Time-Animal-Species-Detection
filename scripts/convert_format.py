@@ -8,7 +8,7 @@ RAW_DIR = './data/raw'
 
 
 logging.basicConfig(
-            filename="./logs/preprocess.log", 
+            filename="./logs/log.log", 
             filemode='w', 
             level=logging.INFO, 
             format='%(asctime)s:%(levelname)s:%(name)s:%(message)s'
@@ -77,33 +77,42 @@ def convert_to_yolo(label_path):
 
     # Read the images
     try:
-        img_path = label_path.replace(".txt", ".jpg")
-        img = Image.open(img_path)
-    except:
-        img_path = label_path.replace(".txt", ".JPG")
-        img = Image.open(img_path)
+        if label_path.endswith("jpg"):
+            img_path = label_path.replace(".txt", ".jpg")
+
+        if label_path.endswith("JPG"):
+            img_path = label_path.replace(".txt", ".JPG")
         
-    width, height = img.size
+        img = Image.open(img_path)
+        width, height = img.size
+    except:
+       logging.warning("Image is not found")
+
 
     # read the labels
     with open(label_path, 'r') as f:
-        label = f.readline().strip().split(" ")
+        labels = f.readlines()
+
+    bbox_cordinates = []
+
+    for label in labels:
+        label = label.strip().split(" ")
+        # convert the string into float
+        label = [float(item) if item.replace(".", "", 1).isdigit() else item for item in label]
+
+        # check the bounding box dimension is normalized
+        is_normalize = all(list(map(is_normalized, label[1:])))
 
 
-    # convert the string into float
-    label = [float(item) if item.replace(".", "", 1).isdigit() else item for item in label]
+        if is_normalize:
+            return
+        else:
+            yolo_format = to_yolo_format(label, width, height)
+            bbox_cordinates.append(yolo_format)
 
-    # check the bounding box dimension is normalized
-    is_normalize = all(list(map(is_normalized, label[1:])))
 
-
-    if is_normalize:
-        return
-    else:
-        yolo_format = to_yolo_format(label, width, height)
-
-        with open(label_path, 'w') as f:
-            f.write(yolo_format)
+    with open(label_path, 'w') as f:
+        f.write(bbox_cordinates)
 
 
 
@@ -116,7 +125,6 @@ if __name__ == "__main__":
             convert_to_yolo(path_label)
     
     logging.info("Save the YOLO format into a .txt file.")
-
     logging.info("Successfully completed the conversion from Pascal format to YOLO format.")
 
       

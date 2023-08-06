@@ -8,7 +8,7 @@ BASE_DIR = './data'
 RAW_DIR = os.path.join(BASE_DIR, 'raw')
 
 logging.basicConfig(
-            filename="./logs/preprocess.log", 
+            filename="./logs/log.log", 
             filemode='a', 
             level=logging.INFO, 
             format='%(asctime)s:%(levelname)s:%(name)s:%(message)s'
@@ -16,17 +16,17 @@ logging.basicConfig(
 
 
 
-def images_labels_split(all_files, subfile, name, mode):
+def images_labels_split(raw_files, subfile, name, mode):
     """
         Args:
             all_files: list     -> location of raw files.
-            subfile: list       -> random selected files.
+            subfile: list       -> list of randomly selected files.
             names: str          -> names of an animal
-            mode: str
+            mode: str           -> type of sets (train, val, test)
     """
 
     # select file names from all files.
-    data = [file for file in all_files if file[:3] in subfile]
+    data = [file for file in raw_files if file[:3] in subfile]
 
     images = [img for img in data if img.endswith(".jpg")]
     labels = [label for label in data if label.endswith(".txt")]   

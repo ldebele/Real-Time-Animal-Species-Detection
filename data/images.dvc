@@ -1,5 +1,6 @@
 outs:
-- md5: c4ec7570b4c7d4289d1766d44aaa4690.dir
-  size: 118382616
-  nfiles: 440
+- md5: 6a9574988c44b03dbe9183b11b1847a2.dir
+  size: 511282690
+  nfiles: 1571
   path: images
+  hash: md5
