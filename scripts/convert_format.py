@@ -110,10 +110,8 @@ def convert_to_yolo(label_path):
             yolo_format = to_yolo_format(label, width, height)
             bbox_cordinates.append(yolo_format)
 
-
     with open(label_path, 'w') as f:
         f.write(bbox_cordinates)
-
 
 
 if __name__ == "__main__":
