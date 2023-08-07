@@ -75,14 +75,14 @@ def convert_to_yolo(label_path):
             label_path: location of labels
     """
 
+    # retrieve image path
+    img_path = label_path.replace(".txt", ".jpg")
+
+    if not os.path.exists(img_path):
+        img_path = label_path.replace(".txt", ".JPG")
+
     # Read the images
     try:
-        if label_path.endswith("jpg"):
-            img_path = label_path.replace(".txt", ".jpg")
-
-        if label_path.endswith("JPG"):
-            img_path = label_path.replace(".txt", ".JPG")
-        
         img = Image.open(img_path)
         width, height = img.size
     except:
@@ -111,7 +111,8 @@ def convert_to_yolo(label_path):
             bbox_cordinates.append(yolo_format)
 
     with open(label_path, 'w') as f:
-        f.write(bbox_cordinates)
+        for label in bbox_cordinates:
+            f.write(f"{str(label)}\n")
 
 
 if __name__ == "__main__":

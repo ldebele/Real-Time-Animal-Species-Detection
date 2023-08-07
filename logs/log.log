@@ -1,0 +1,3 @@
+2023-08-07 15:46:19,889:INFO:root:Save the YOLO format into a .txt file.
+2023-08-07 15:46:19,889:INFO:root:Successfully completed the conversion from Pascal format to YOLO format.
+2023-08-07 15:48:04,463:INFO:root:Successfully completed the datasets splitting.
