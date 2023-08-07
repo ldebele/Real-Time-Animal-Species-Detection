@@ -1,0 +1,4 @@
+[core]
+    remote = driver
+['remote "driver"']
+    url = https://drive.google.com/drive/folders/12h9oY5wLbkCpafCzIPTuifYxfhLQJkJs?usp=drive_link
