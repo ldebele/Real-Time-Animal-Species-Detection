@@ -1,0 +1,11 @@
+# dataset directory path
+path: '../data'
+train: '/images/train'
+valid: './images/val'
+test: './images/test'
+
+# classes
+nc: 10
+
+# Classes names
+names: ['Buffalo', "Elephant", "Rhino", "Zebra", "Cheetah", 'Fox', 'Jaguar', 'Leapard', 'Lion', 'Panda']

@@ -19,7 +19,7 @@ logging.basicConfig(
 def images_labels_split(raw_files, subfile, name, mode):
     """
         Args:
-            all_files: list     -> location of raw files.
+            raw_files: list     -> location of raw files.
             subfile: list       -> list of randomly selected files.
             names: str          -> names of an animal
             mode: str           -> type of sets (train, val, test)
