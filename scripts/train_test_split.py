@@ -26,10 +26,13 @@ def images_labels_split(raw_files, subfile, name, mode):
     """
 
     # select file names from all files.
-    data = [file for file in raw_files if file[:3] in subfile]
+    data = [file for file in raw_files if file[:-4] in subfile]
 
-    images = [img for img in data if img.endswith(".jpg")]
-    labels = [label for label in data if label.endswith(".txt")]   
+    images = [img for img in data if img.endswith(".jpg") | img.endswith(".JPG")]
+    labels = [label for label in data if label.endswith(".txt")]  
+
+    # images and labels data mustbe equal.
+    assert len(images) == len(labels)
 
     # Copy files to the respective folders
     # create directory if not created
@@ -72,28 +75,37 @@ def train_test_split(name, split_ratio, sample=150):
     random.shuffle(files)
 
     # randomly takes sample images
-    if sample < len(files):
-        files = random.sample(files, sample)
+    if sample >= len(files):
+        sample = len(files)
+    # print(f"{name} - {len(files)}")
+    
+    files = random.sample(files, sample)
 
     # Calculate the split sizes based on the split ratio
     train_size = int(sample * split_ratio[0])
     val_size = int(sample * split_ratio[1])
-
 
     # split into train, validation and test set
     train_sets = files[:train_size]
     val_sets = files[train_size:train_size + val_size]
     test_sets = files[train_size+val_size:]
 
+    # print(f"{name}, train_size: {len(train_sets)}, val_size: {len(val_sets)}, test_size: {len(test_sets)}\n")
+    # print(train_sets)
+    # print(val_sets)
+    # print(test_sets)
+    # print("\n\n")
+
     # split and save the dataset into images and labels
     images_labels_split(os.listdir(DATA_PATH), train_sets, name, mode="train")  # For training set
     images_labels_split(os.listdir(DATA_PATH), val_sets, name, mode="val")  # For validation set
     images_labels_split(os.listdir(DATA_PATH), test_sets, name, mode="test")  # For test set
+    logging.info(f"Split the {name} dataset into train, validation and test sets")
     
 
 if __name__ == "__main__":
     # set split ratio
-    split_ratio = [0.8, 0.15]  # 80% train, 15% validation, 5% test
+    split_ratio = [0.7, 0.15]  # 80% train, 15% validation, 5% test
 
     # list all animals
     animals = os.listdir(RAW_DIR)

@@ -1,3 +1,13 @@
-2023-08-07 15:46:19,889:INFO:root:Save the YOLO format into a .txt file.
-2023-08-07 15:46:19,889:INFO:root:Successfully completed the conversion from Pascal format to YOLO format.
-2023-08-07 15:48:04,463:INFO:root:Successfully completed the datasets splitting.
+2023-08-12 15:37:37,530:INFO:root:Save the YOLO format into a .txt file.
+2023-08-12 15:37:37,530:INFO:root:Successfully completed the conversion from Pascal format to YOLO format.
+2023-08-12 15:37:40,764:INFO:root:Split the leopard dataset into train, validation and test sets
+2023-08-12 15:37:40,905:INFO:root:Split the panda dataset into train, validation and test sets
+2023-08-12 15:37:41,094:INFO:root:Split the fox dataset into train, validation and test sets
+2023-08-12 15:37:41,203:INFO:root:Split the rhino dataset into train, validation and test sets
+2023-08-12 15:37:41,450:INFO:root:Split the buffalo dataset into train, validation and test sets
+2023-08-12 15:37:41,650:INFO:root:Split the cheetah dataset into train, validation and test sets
+2023-08-12 15:37:41,775:INFO:root:Split the elephant dataset into train, validation and test sets
+2023-08-12 15:37:41,892:INFO:root:Split the zebra dataset into train, validation and test sets
+2023-08-12 15:37:42,045:INFO:root:Split the jaguar dataset into train, validation and test sets
+2023-08-12 15:37:42,189:INFO:root:Split the lion dataset into train, validation and test sets
+2023-08-12 15:37:42,189:INFO:root:Successfully completed the datasets splitting.
