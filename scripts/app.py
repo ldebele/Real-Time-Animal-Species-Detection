@@ -39,6 +39,7 @@ if image:
     # plot boxes
     boxes = predict[0].boxes
     plotted = predict[0].plot()[:, :, ::-1]
+    
     if len(boxes) == 0:
         st.markdown("*No Detection*")
 
