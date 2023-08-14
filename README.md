@@ -7,7 +7,7 @@
 - Contirbuting
 
 ## Datasets
-The dataset used in this project consists of labeled images of 10 different animal classes: Buffalo, Cheetahs, Elephant, Fox, Jaguars, Leopard, Lion, Panda, Rhino, Zebra. You can find the dataset: 
+The dataset used in this project consists of labeled images of 10 different animal classes: Buffalo, Cheetahs, Elephant, Fox, Jaguars, Leopard, Lion, Panda, Rhino, Zebra. You can find the datasets: 
 - [Dataset 1](https://www.kaggle.com/datasets/biancaferreira/african-wildlife)
 - [Dataset 2](https://www.kaggle.com/datasets/brsdincer/danger-of-extinction-animal-image-set)
 - [Dataset 3](https://www.kaggle.com/datasets/antoreepjana/animals-detection-images-dataset )
