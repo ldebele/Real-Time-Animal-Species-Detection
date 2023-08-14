@@ -30,9 +30,6 @@ The dataset used in this project consists of labeled images of 10 different anim
     │   ├── app.py
     │   ├── convert_format.py
     │   └── train_test_split.py
-    ├── test
-    │   └── data.py
-    ├── README.md
     └── requirements.txt
 
 ## Getting Started
@@ -68,6 +65,10 @@ Follow theses steps to set up the environment and run the application.
     ```python
     streamlit run './scripts/app.py'
     ```
+
+## Web App
+The trained model has been deployed on Hugging Face for practical use.
+- you can access the deployed [web app](https://huggingface.co/spaces/ldebele/animal_detection_app)
 
 ## Contributing
 Contributions to this project are welcome! If you have any suggestions, improvements, or bug fixes, feel free to open an issue or a pull request.
