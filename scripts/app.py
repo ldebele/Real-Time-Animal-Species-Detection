@@ -40,7 +40,7 @@ if image:
     boxes = predict[0].boxes
     plotted = predict[0].plot()[:, :, ::-1]
     if len(boxes) == 0:
-        st.write("No Detection")
+        st.markdown("*No Detection*")
 
     # open the image.
     st.image(plotted, caption="Detected Image", width=600)
