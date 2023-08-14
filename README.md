@@ -14,28 +14,32 @@
 Follow theses steps to set up the environment and run the application.
 1. Fork the repository [here](https://github.com/ldebele/animal-Species-Detection)
 2. Clone the forked repository.
-```
-git clone https://github.com/<YOUR-USERNAME>Animal-Species-Detection
-cd Animal-Species-Detection
-```
+    ```bash
+    git clone https://github.com/<YOUR-USERNAME>/Animal-Species-Detection
+    cd Animal-Species-Detection
+    ```
+
 3. Create a python virtual environment.
-``` 
-python3 -m venv venv
-```
+    ``` bash
+    python3 -m venv venv
+    ```
+
 4. Activate the virtual environment.
-- On Linux and macOS
-```
-source venv/bin/activate
-```
-- On Windows
-```
-venv\Scripts\activate
-```
+
+    - On Linux and macOS
+    ``` bash
+    source venv/bin/activate
+    ```
+    - On Windows
+    ``` bash
+    venv\Scripts\activate
+    ```
+
 5. Install Dependencies
-```
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 6. Run the application.
-```
-streamlit run './scripts/app.py
-```
+    ```bash
+    streamlit run './scripts/app.py'
+    ```
