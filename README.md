@@ -6,6 +6,10 @@
 - Getting Started
 
 ## Datasets
+The dataset used in this project consists of labeled images of 10 different animal classes: Buffalo, Elephant, Rhino, Zebra, Leopard, Fox, Jaguars, Lion, Panda, and Cheetahs. The images are divided into training, validation, and testing sets to train and evaluate the model's performance. 
+You can find the datasets:
+- [Dataset 1](https://www.kaggle.com/datasets/biancaferreira/african-wildlife)
+- [Dataset 2](https://www.kaggle.com/datasets/brsdincer/danger-of-extinction-animal-image-set)
 
 ## Project Structure
     ├── config
@@ -16,10 +20,11 @@
     ├── logs
     │   └── log.log      
     ├── notebooks
-    │   ├── eda.ipynb
-    │   └── models.ipynb
+    │   └── yolov8.ipynb
     ├── runs
     │   └── detect
+    │       ├── train
+    │       └── val
     ├── scripts
     │   ├── app.py
     │   ├── convert_format.py
@@ -63,3 +68,6 @@ Follow theses steps to set up the environment and run the application.
     ```python
     streamlit run './scripts/app.py'
     ```
+
+## Contributing
+Contributions to this project are welcome! If you have any suggestions, improvements, or bug fixes, feel free to open an issue or a pull request.
