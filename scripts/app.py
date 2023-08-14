@@ -5,7 +5,8 @@ import streamlit as st
 from ultralytics import YOLO
 
 
-MODEL_DIR = './models/best.pt'
+# MODEL_DIR = './models/best.pt'
+MODEL_DIR = './runs/detect/train/weights/best.pt'
 
 logging.basicConfig(
             filename="./logs/log.log", 
@@ -38,6 +39,8 @@ if image:
     # plot boxes
     boxes = predict[0].boxes
     plotted = predict[0].plot()[:, :, ::-1]
+    if len(boxes) == 0:
+        st.write("No Detection")
 
     # open the image.
     st.image(plotted, caption="Detected Image", width=600)

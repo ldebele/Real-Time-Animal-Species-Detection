@@ -77,7 +77,6 @@ def train_test_split(name, split_ratio, sample=150):
     # randomly takes sample images
     if sample >= len(files):
         sample = len(files)
-    # print(f"{name} - {len(files)}")
     
     files = random.sample(files, sample)
 
@@ -89,12 +88,6 @@ def train_test_split(name, split_ratio, sample=150):
     train_sets = files[:train_size]
     val_sets = files[train_size:train_size + val_size]
     test_sets = files[train_size+val_size:]
-
-    # print(f"{name}, train_size: {len(train_sets)}, val_size: {len(val_sets)}, test_size: {len(test_sets)}\n")
-    # print(train_sets)
-    # print(val_sets)
-    # print(test_sets)
-    # print("\n\n")
 
     # split and save the dataset into images and labels
     images_labels_split(os.listdir(DATA_PATH), train_sets, name, mode="train")  # For training set
