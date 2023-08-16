@@ -98,7 +98,7 @@ def train_test_split(name, split_ratio, sample=150):
 
 if __name__ == "__main__":
     # set split ratio
-    split_ratio = [0.7, 0.15]  # 80% train, 15% validation, 5% test
+    split_ratio = [0.80, 0.17]  # 80% train, 17% validation, 3% test
 
     # list all animals
     animals = os.listdir(RAW_DIR)

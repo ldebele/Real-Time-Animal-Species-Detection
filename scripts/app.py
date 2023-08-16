@@ -41,7 +41,7 @@ if image:
     plotted = predict[0].plot()[:, :, ::-1]
 
     if len(boxes) == 0:
-        st.markdown("*No Detection*")
+        st.markdown("**No Detection**")
 
     # open the image.
     st.image(plotted, caption="Detected Image", width=600)

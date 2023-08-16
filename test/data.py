@@ -12,7 +12,7 @@ class TestData(unittest.TestCase):
         ('./data/images/train/elephant', './data/labels/train/elephant'),
         ('./data/images/train/fox', './data/labels/train/fox'),
         ('./data/images/train/jaguar', './data/labels/train/jaguar'),
-        ('./data/images/train/leopard', './data/labels/train/leopard'),
+        ('./data/images/train/tiger', './data/labels/train/tiger'),
         ('./data/images/train/lion', './data/labels/train/lion'),
         ('./data/images/train/panda', './data/labels/train/panda'),
         ('./data/images/train/rhino', './data/labels/train/rhino'),
@@ -21,6 +21,8 @@ class TestData(unittest.TestCase):
     def test_images_labels_contain_same_file(self, IMG_DIR, LABEL_DIR):
         images = [file[:-4] for file in os.listdir(IMG_DIR)]
         labels = [file[:-4] for file in os.listdir(LABEL_DIR)]
+        
+        # test labels and images contains the same files.
         self.assertEqual(set(images), set(labels))
 
         # test labels and images have the same length

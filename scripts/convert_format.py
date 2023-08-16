@@ -38,7 +38,7 @@ def to_yolo_format(label, img_width, img_height):
             "cheetah": 4,
             "fox": 5,
             "jaguar": 6,
-            "leopard": 7,
+            "tiger": 7,
             "lion": 8,
             "panda": 9,
         }

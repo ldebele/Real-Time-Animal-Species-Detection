@@ -8,4 +8,5 @@ test: './images/test'
 nc: 10
 
 # Classes names
-names: ['Buffalo', "Elephant", "Rhino", "Zebra", "Cheetah", 'Fox', 'Jaguar', 'Leapard', 'Lion', 'Panda']
+names: ['Buffalo', "Elephant", "Rhino", "Zebra", "Cheetah", 'Fox', 'Jaguar', 'Leopard', 'Lion', 'Panda']
+
