@@ -15,6 +15,44 @@ logging.basicConfig(
         )
 
 
+def train_test_split(name, split_ratio, sample=150):
+    """
+        Args:
+            name: str               -> name of an animal
+            split_ratio: list       -> list of split ratio
+            sample: int             -> sample size
+    """
+
+    # set to the raw data path
+    DATA_PATH = os.path.join(RAW_DIR, name)
+    files = [filename[:-4] for filename in os.listdir(DATA_PATH) if filename.endswith(".txt")]
+
+    # shuffle the data
+    random.seed(42)
+    random.shuffle(files)
+
+    # randomly takes sample images
+    if sample >= len(files):
+        sample = len(files)
+    
+    files = random.sample(files, sample)
+
+    # Calculate the split sizes based on the split ratio
+    train_size = int(sample * split_ratio[0])
+    val_size = int(sample * split_ratio[1])
+
+    # split into train, validation and test set
+    train_sets = files[:train_size]
+    val_sets = files[train_size:train_size + val_size]
+    test_sets = files[train_size+val_size:]
+
+    # split and save the dataset into images and labels
+    images_labels_split(os.listdir(DATA_PATH), train_sets, name, mode="train")  # For training set
+    images_labels_split(os.listdir(DATA_PATH), val_sets, name, mode="val")  # For validation set
+    images_labels_split(os.listdir(DATA_PATH), test_sets, name, mode="test")  # For test set
+    logging.info(f"Split the {name} dataset into train, validation and test sets")
+
+
 
 def images_labels_split(raw_files, subfile, name, mode):
     """
@@ -58,43 +96,6 @@ def images_labels_split(raw_files, subfile, name, mode):
         logging.warning("Unable to save the labels.")
 
 
-def train_test_split(name, split_ratio, sample=150):
-    """
-        Args:
-            name: str               -> name of an animal
-            split_ratio: list       -> list of split ratio
-            sample: int             -> sample size
-    """
-
-    # set to the raw data path
-    DATA_PATH = os.path.join(RAW_DIR, name)
-    files = [filename[:-4] for filename in os.listdir(DATA_PATH) if filename.endswith(".txt")]
-
-    # shuffle the data
-    random.seed(42)
-    random.shuffle(files)
-
-    # randomly takes sample images
-    if sample >= len(files):
-        sample = len(files)
-    
-    files = random.sample(files, sample)
-
-    # Calculate the split sizes based on the split ratio
-    train_size = int(sample * split_ratio[0])
-    val_size = int(sample * split_ratio[1])
-
-    # split into train, validation and test set
-    train_sets = files[:train_size]
-    val_sets = files[train_size:train_size + val_size]
-    test_sets = files[train_size+val_size:]
-
-    # split and save the dataset into images and labels
-    images_labels_split(os.listdir(DATA_PATH), train_sets, name, mode="train")  # For training set
-    images_labels_split(os.listdir(DATA_PATH), val_sets, name, mode="val")  # For validation set
-    images_labels_split(os.listdir(DATA_PATH), test_sets, name, mode="test")  # For test set
-    logging.info(f"Split the {name} dataset into train, validation and test sets")
-    
 
 if __name__ == "__main__":
     # set split ratio

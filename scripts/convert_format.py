@@ -15,11 +15,59 @@ logging.basicConfig(
         )
 
 
+def pascal_to_yolo(label_path):
+    """
+        Args:
+            label_path: location of labels
+    """
+
+    # retrieve image path
+    img_path = label_path.replace(".txt", ".jpg")
+
+    if not os.path.exists(img_path):
+        img_path = label_path.replace(".txt", ".JPG")
+
+    # Read the images
+    try:
+        img = Image.open(img_path)
+        width, height = img.size
+    except:
+       logging.warning("Image is not found")
+
+
+    # read the labels
+    with open(label_path, 'r') as f:
+        labels = f.readlines()
+
+    bbox_cordinates = []
+
+    for label in labels:
+        label = label.strip().split(" ")
+        # convert the string into float
+        label = [float(item) if item.replace(".", "", 1).isdigit() else item for item in label]
+
+        # check the bounding box dimension is normalized
+        is_normalize = all(list(map(is_normalized, label[1:])))
+
+
+        if is_normalize:
+            return
+        else:
+            yolo_format = convert_bbox_to_yolo(label, width, height)
+            bbox_cordinates.append(yolo_format)
+
+    with open(label_path, 'w') as f:
+        for label in bbox_cordinates:
+            f.write(f"{str(label)}\n")
+
+
+
 def is_normalized(bound_box_dim):
     return 0.0 <= bound_box_dim <= 1.0
 
 
-def to_yolo_format(label, img_width, img_height):
+
+def convert_bbox_to_yolo(label, img_width, img_height):
     """
         Args:
             label: list       -> pascal format label
@@ -69,50 +117,6 @@ def to_yolo_format(label, img_width, img_height):
     return yolo_format
 
 
-def convert_to_yolo(label_path):
-    """
-        Args:
-            label_path: location of labels
-    """
-
-    # retrieve image path
-    img_path = label_path.replace(".txt", ".jpg")
-
-    if not os.path.exists(img_path):
-        img_path = label_path.replace(".txt", ".JPG")
-
-    # Read the images
-    try:
-        img = Image.open(img_path)
-        width, height = img.size
-    except:
-       logging.warning("Image is not found")
-
-
-    # read the labels
-    with open(label_path, 'r') as f:
-        labels = f.readlines()
-
-    bbox_cordinates = []
-
-    for label in labels:
-        label = label.strip().split(" ")
-        # convert the string into float
-        label = [float(item) if item.replace(".", "", 1).isdigit() else item for item in label]
-
-        # check the bounding box dimension is normalized
-        is_normalize = all(list(map(is_normalized, label[1:])))
-
-
-        if is_normalize:
-            return
-        else:
-            yolo_format = to_yolo_format(label, width, height)
-            bbox_cordinates.append(yolo_format)
-
-    with open(label_path, 'w') as f:
-        for label in bbox_cordinates:
-            f.write(f"{str(label)}\n")
 
 
 if __name__ == "__main__":
@@ -121,7 +125,7 @@ if __name__ == "__main__":
     for animal in animals:
         path_labels = glob.glob(f'{RAW_DIR}/{animal.lower()}/*.txt')
         for path_label in path_labels:
-            convert_to_yolo(path_label)
+            pascal_to_yolo(path_label)
     
     logging.info("Save the YOLO format into a .txt file.")
     logging.info("Successfully completed the conversion from Pascal format to YOLO format.")
