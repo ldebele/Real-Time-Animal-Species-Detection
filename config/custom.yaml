@@ -5,8 +5,7 @@ valid: './images/val'
 test: './images/test'
 
 # classes
-nc: 10
+nc: 14
 
 # Classes names
-names: ['Buffalo', "Elephant", "Rhino", "Zebra", "Cheetah", 'Fox', 'Jaguar', 'Leopard', 'Lion', 'Panda']
-
+names: ['Buffalo', 'Elephant', 'Rhino', 'Zebra', "Cheetah", "Fox", "Jaguar", "Tiger", "Lion", "Panda", "Deer", "Rabbit", "Raccon", "Squirrel"]

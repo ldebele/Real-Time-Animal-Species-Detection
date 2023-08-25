@@ -99,7 +99,7 @@ def images_labels_split(raw_files, subfile, name, mode):
 
 if __name__ == "__main__":
     # set split ratio
-    split_ratio = [0.80, 0.17]  # 80% train, 17% validation, 3% test
+    split_ratio = [0.7, 0.15]  # 70% train, 15% validation, 15% test
 
     # list all animals
     animals = os.listdir(RAW_DIR)

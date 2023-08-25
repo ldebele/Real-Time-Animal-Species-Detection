@@ -1,13 +1,14 @@
 # Animal-Species-Detection
 
 ## Table of Contents
-- Datasets
-- Project Structure
-- Getting Started
-- Contirbuting
+- [Datasets](#datasets)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Web App](#web-app)
+- [Contirbuting](#contributing)
 
 ## Datasets
-The dataset used in this project consists of labeled images of 10 different animal classes: Buffalo, Cheetahs, Elephant, Fox, Jaguars, Lion, Panda, Rhino, Tiger, Zebra. You can find the datasets: 
+The dataset used in this project consists of labeled images of 10 different animal classes: Buffalo, Cheetahs, Deer, Elephant, Fox, Jaguars, Lion, Panda, Rabbit, Raccon, Rhino, Squirrel, Tiger, Zebra. You can find the datasets: 
 - [Dataset 1](https://www.kaggle.com/datasets/biancaferreira/african-wildlife)
 - [Dataset 2](https://www.kaggle.com/datasets/brsdincer/danger-of-extinction-animal-image-set)
 - [Dataset 3](https://www.kaggle.com/datasets/antoreepjana/animals-detection-images-dataset )
@@ -24,7 +25,7 @@ The dataset used in this project consists of labeled images of 10 different anim
     │   └── yolov8.ipynb
     ├── runs
     │   └── detect
-    │       ├── train
+    │       ├── train
     │       └── val
     ├── scripts
     │   ├── app.py
