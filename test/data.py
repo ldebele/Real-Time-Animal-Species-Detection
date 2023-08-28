@@ -17,10 +17,6 @@ class TestData(unittest.TestCase):
         ('./data/images/train/panda', './data/labels/train/panda'),
         ('./data/images/train/rhino', './data/labels/train/rhino'),
         ('./data/images/train/zebra', './data/labels/train/zebra'),
-        ('./data/images/train/deer', './data/labels/train/deer'),
-        ('./data/images/train/rabbit', './data/labels/train/rabbit'),
-        ('./data/images/train/raccoon', './data/labels/train/raccoon'),
-        ('./data/images/train/squirrel', './data/labels/train/squirrel')
     ])
     def test_images_labels_contain_same_file(self, IMG_DIR, LABEL_DIR):
         images = [file[:-4] for file in os.listdir(IMG_DIR)]
@@ -48,10 +44,6 @@ class TestData(unittest.TestCase):
         ('./data/images/val/panda', './data/images/test/panda'),
         ('./data/images/val/rhino', './data/images/test/rhino'),
         ('./data/images/val/zebra', './data/images/test/zebra'),
-        ('./data/images/val/deer', './data/images/test/deer'),
-        ('./data/images/val/rabbit', './data/images/test/rabbit'),
-        ('./data/images/val/raccoon', './data/images/test/raccoon'),
-        ('./data/images/val/squirrel', './data/images/test/squirrel')
     ])
     def test_val_test_contains_different_file(self, VAL_DIR, TEST_DIR):
         val_img = [file[:-4] for file in os.listdir(VAL_DIR)]

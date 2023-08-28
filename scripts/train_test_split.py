@@ -40,6 +40,7 @@ def train_test_split(name, split_ratio, sample=150):
     # Calculate the split sizes based on the split ratio
     train_size = int(sample * split_ratio[0])
     val_size = int(sample * split_ratio[1])
+ 
 
     # split into train, validation and test set
     train_sets = files[:train_size]

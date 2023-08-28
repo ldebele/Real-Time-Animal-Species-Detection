@@ -88,11 +88,7 @@ def convert_bbox_to_yolo(label, img_width, img_height):
             "jaguar": 6,
             "tiger": 7,
             "lion": 8,
-            "panda": 9,
-            "deer": 10,
-            "rabbit": 11,
-            "raccoon": 12,
-            "squirrel": 13
+            "panda": 9
         }
 
 
