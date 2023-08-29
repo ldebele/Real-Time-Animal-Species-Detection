@@ -11,3 +11,5 @@
 2023-08-28 13:23:31,019:INFO:root:Split the jaguar dataset into train, validation and test sets
 2023-08-28 13:23:31,322:INFO:root:Split the lion dataset into train, validation and test sets
 2023-08-28 13:23:31,322:INFO:root:Successfully completed the datasets splitting.
+2023-08-29 17:07:05,225:INFO:root:Detected Image
+2023-08-29 18:30:56,262:INFO:root:Detected Image
