@@ -27,8 +27,7 @@ def main():
         st.sidebar.markdown(f"- *{animal.capitalize()}*")
 
     st.title("Real-time Animal Species Detection")
-    st.write("The aim of the project is to develop an effective computer vision \
-            model that can detect wildlife in real-time predictions")
+    st.write("The aim of this project is to develop an efficient computer vision model capable of real-time wildlife detection.")
 
     # Load image or video
     uploaded_file = st.file_uploader("Upload an image", type=['jpg', 'jpeg', 'png', 'mp4'])

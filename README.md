@@ -1,5 +1,5 @@
 # Real-Time-Animal-Species-Detection
-The aim of the project is to develop an effective computer vision model that can detect wildlife in real-time predictions.
+The aim of this project is to develop an efficient computer vision model capable of real-time wildlife detection.
 
 <p align="center">
   <img src="./demo/demo.gif" alt="Demo GIF">
@@ -12,7 +12,7 @@ The aim of the project is to develop an effective computer vision model that can
 - [Evaluation](#evaluation)
 - [Web App](#web-app)
 - [Contirbuting](#contributing)
-- [Author][#author]
+- [Author](#author)
 
 ## Datasets
 The dataset used in this project consists of labeled images of 10 different animal classes: Buffalo, Cheetahs, Deer, Elephant, Fox, Jaguars, Lion, Panda, Rabbit, Raccon, Rhino, Squirrel, Tiger, Zebra. You can find the datasets: 
