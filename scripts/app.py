@@ -28,8 +28,7 @@ def main():
 
     st.title("Real-time Animal Species Detection")
     st.write("The aim of the project is to develop an effective computer vision \
-            model that can detect wildlife in urban environments, on highways \
-            using real-time predictions to warn humans of potential collision with wildlife.")
+            model that can detect wildlife in real-time predictions")
 
     # Load image or video
     uploaded_file = st.file_uploader("Upload an image", type=['jpg', 'jpeg', 'png', 'mp4'])
