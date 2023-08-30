@@ -1,11 +1,19 @@
 # Animal-Species-Detection
+The aim of the project is to develop an effective computer vision model that can detect wildlife in urban environments, on highways using real-time visuals to warn humans of potential collision with wildlife.
+
+<p align="center">
+  <img src="./demo/demo.gif" alt="Demo GIF">
+</p>
+
 
 ## Table of Contents
 - [Datasets](#datasets)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+- [Evaluation](#evaluation)
 - [Web App](#web-app)
 - [Contirbuting](#contributing)
+- [Author][#author]
 
 ## Datasets
 The dataset used in this project consists of labeled images of 10 different animal classes: Buffalo, Cheetahs, Deer, Elephant, Fox, Jaguars, Lion, Panda, Rabbit, Raccon, Rhino, Squirrel, Tiger, Zebra. You can find the datasets: 
@@ -68,9 +76,20 @@ Follow theses steps to set up the environment and run the application.
     streamlit run './scripts/app.py'
     ```
 
+## Evaluation
+The performance of the model is evaluated by metrics such as Precision, Recal, and Mean Average Precision (mAP).
+
+| Model   | Precision | Recall | F1-score | mAP@0.5 | mAP@0.5:0.95 |
+|---------|-----------|--------|----------|---------|--------------|
+| YOLOv8  |   0.944   |  0.915 |   0.93   |   0.95  |    0.804     |
+
+
 ## Web App
 The trained model has been deployed on Hugging Face for practical use.
 - you can access the deployed [web app](https://huggingface.co/spaces/ldebele/animal_detection_app)
 
 ## Contributing
 Contributions to this project are welcome! If you have any suggestions, improvements, or bug fixes, feel free to open an issue or a pull request.
+
+## Author
+- `Lemi Debele`
