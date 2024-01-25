@@ -15,7 +15,7 @@ The aim of this project is to develop an efficient computer vision model capable
 - [Author](#author)
 
 ## Datasets
-The dataset used in this project consists of labeled images of 10 different animal classes: Buffalo, Cheetahs, Deer, Elephant, Fox, Jaguars, Lion, Panda, Rabbit, Raccon, Rhino, Squirrel, Tiger, Zebra. You can find the datasets: 
+The dataset used in this project consists of labeled images of 10 different animal classes: Buffalo, Cheetahs, Deer, Elephant, Fox, Jaguars, Lion, Panda, Tiger, Zebra. You can find the datasets: 
 - [Dataset 1](https://www.kaggle.com/datasets/biancaferreira/african-wildlife)
 - [Dataset 2](https://www.kaggle.com/datasets/brsdincer/danger-of-extinction-animal-image-set)
 - [Dataset 3](https://www.kaggle.com/datasets/antoreepjana/animals-detection-images-dataset )
