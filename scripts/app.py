@@ -23,7 +23,9 @@ def main():
 
     st.sidebar.header("**Animal Classes**")
 
-    for animal in sorted(os.listdir('./data/raw')):
+    class_names = ['Buffalo', 'Elephant', 'Rhino', 'Zebra', "Cheetah", "Fox", "Jaguar", "Tiger", "Lion", "Panda"]
+
+    for animal in class_names:
         st.sidebar.markdown(f"- *{animal.capitalize()}*")
 
     st.title("Real-time Animal Species Detection")
